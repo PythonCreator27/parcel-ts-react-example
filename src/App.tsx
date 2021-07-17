@@ -11,12 +11,20 @@ export const App: React.FC = () => {
     return (
         <BrowserRouter>
             <div className="m-10">
-                <Suspense fallback={Loading}>
+                <Suspense fallback={<Loading />}>
                     <Switch>
-                        <Route path="/" component={Home} exact />
-                        <Route path="/lazy" component={Lazy} exact />
-                        <Route path="/eager" component={NotLazy} exact />
-                        <Route path="*" component={NotFound} />
+                        <Route path="/" exact>
+                            <Home />
+                        </Route>
+                        <Route path="/lazy" exact>
+                            <Lazy />
+                        </Route>
+                        <Route path="/eager" exact>
+                            <NotLazy />
+                        </Route>
+                        <Route path="*">
+                            <NotFound />
+                        </Route>
                     </Switch>
                 </Suspense>
             </div>
